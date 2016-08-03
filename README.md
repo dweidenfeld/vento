@@ -7,6 +7,8 @@ You are also able to register to the event internally AND externally. All callba
 I implemented this library because I could not find another library doing this simple stuff. I wrote this code nearly
 in every project in my company or in private projects, so I outsourced the code from the projects.
 
+The whole source is written in ES2015, so the examples are also written in ES2015 syntax.
+
 ## Install
 ```
 npm install vent
