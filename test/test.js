@@ -2,28 +2,31 @@ import chai from 'chai'; // eslint-disable-line
 
 import TestClass from './TestClass';
 
-describe('Vent', () => {
+describe('Vento', () => {
   const testClass = new TestClass();
 
-  it('simple test event fired with data', () => {
+  it('simple test event fired with data', (done) => {
     testClass.fireTest('some', 'data');
 
-    chai.assert(testClass.onEventFired);
-    chai.assert.deepEqual(['some', 'data'], testClass.onEventData);
+    setTimeout(() => {
+      chai.assert(testClass.onEventFired);
+      chai.assert.deepEqual(['some', 'data'], testClass.onEventData);
+
+      done();
+    }, 0);
   });
 
-  it('not overwritten method fired', () => {
-    try {
-      testClass.fireCustom();
-      chai.fail('exception not occurred');
-    } catch (e) {
-      // everything ok
-    }
+  it('not overwritten method fired', (done) => {
+    testClass.fireCustom();
 
-    chai.assert(testClass.customFireEventFired);
+    setTimeout(() => {
+      chai.assert(testClass.customFireEventFired);
+
+      done();
+    }, 0);
   });
 
-  it('external event fired', () => {
+  it('external event fired', (done) => {
     let fired = false;
     testClass.on('outter', () => {
       fired = true;
@@ -31,7 +34,11 @@ describe('Vent', () => {
 
     testClass.fireOutter();
 
-    chai.assert(fired);
-    chai.assert(testClass.onOutterFired);
+    setTimeout(() => {
+      chai.assert(fired);
+      chai.assert(testClass.onOutterFired);
+
+      done();
+    }, 0);
   });
 });

@@ -1,6 +1,6 @@
-# Vent
-Vent is a event library that automatically creates event methods.
-Vent is used to be the super class of a class. You can also simply extend your class with vent. 
+# Vento
+Vento is a event library that automatically creates event methods.
+Vento is used to be the super class of a class. You can also simply extend your class with Vento. 
 After this you'll be able to either fire the event from the class itself or from external.
 You are also able to register to the event internally AND externally. All callbacks will be executed.
 
@@ -11,20 +11,20 @@ The whole source is written in ES2015, so the examples are also written in ES201
 
 ## Install
 ```
-npm install vent
+npm install vento
 ```
 
 ## Usage
-First you have to import Vent to the file you want to use it.
+First you have to import Vento to the file you want to use it.
 
 ```javascript
-import Vent from 'vent';
+import Vento from 'vento';
 ```
 
-Then extend your class with Vent.
+Then extend your class with Vento.
 
 ```javascript
-class MyClass extends Vent {}
+class MyClass extends Vento {}
 ```
 
 After this you can register new events either in the constructor or somewhere else.
@@ -56,9 +56,9 @@ myClass.fireEventName();
 ### Full example
 
 ```javascript
-import Vent from 'vent';
+import Vento from 'vento';
 
-class MyClass extends Vent {
+class MyClass extends Vento {
   constructor() {
     this.addEvent('test');
   }

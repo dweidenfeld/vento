@@ -1,8 +1,8 @@
 /**
- * Vent is a base class for event classes.
+ * Vento is a base class for event classes.
  * It lets you generate event methods automatically and adds them to your class.
  */
-export default class Vent {
+export default class Vento {
 
   /**
    * Adds a new event to the project.
@@ -15,7 +15,7 @@ export default class Vent {
     if (!this[fireEvent]) {
       this[fireEvent] = (...data) => {
         if (this.ventEvents[event] && this.ventEvents[event].length > 0) {
-          this.ventEvents[event].forEach((callback) => setTimeout(callback(...data), 0));
+          this.ventEvents[event].forEach((callback) => setTimeout(callback.bind(this, ...data), 0));
         }
       };
     }
@@ -33,6 +33,9 @@ export default class Vent {
    * @returns {null} null
    */
   on(event, callback) {
+    if (!event || !callback) {
+      return;
+    }
     if (!this.ventEvents) {
       this.ventEvents = {};
     }

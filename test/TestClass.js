@@ -1,9 +1,9 @@
-import Vent from '../src/Vent';
+import Vento from '../src/Vento';
 
 /**
  * The test class.
  */
-export default class TestClass extends Vent {
+export default class TestClass extends Vento {
 
   /**
    * @constructor
@@ -40,8 +40,7 @@ export default class TestClass extends Vent {
   /**
    * @override
    */
-  fireCustom(...data) {
+  fireCustom() {
     this.customFireEventFired = true;
-    this.onCustom(data);
   }
 }

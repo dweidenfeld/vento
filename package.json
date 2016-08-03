@@ -1,17 +1,17 @@
 {
-  "name": "vent",
+  "name": "vento",
   "version": "1.0.0",
   "description": "An event superclass for automatic method generation",
-  "main": "dist/vent.js",
+  "main": "dist/vento.js",
   "scripts": {
     "lint": "eslint src/**",
     "test": "mocha --compilers js:babel-core/register test",
-    "build": "rimraf dist && mkdir dist && babel -s true --minified -o dist/vent.js src/Vent.js",
+    "build": "rimraf dist && mkdir dist && babel -s true --minified -o dist/vento.js src/Vento.js",
     "default": "npm run test && npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dweidenfeld/vent.git"
+    "url": "https://github.com/dweidenfeld/vento.git"
   },
   "keywords": [
     "event",
