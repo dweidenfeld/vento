@@ -1,6 +1,6 @@
 {
   "name": "vento",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "An event superclass for automatic method generation",
   "main": "dist/vento.js",
   "scripts": {
