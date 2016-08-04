@@ -11,36 +11,35 @@ export default class TestClass extends Vento {
   constructor() {
     super();
 
-    this.onEventFired = false;
-    this.onEventData = [];
-    this.customFireEventFired = false;
-    this.onOutterFired = false;
+    // event check variables
+    this.testEventFired = false;
+    this.customEventFired = false;
+    this.outterEventFired = false;
+    this.testEventData = [];
 
-    this.addEvent('test');
+    // register events
+    this.addEvent('test', this.test);
     this.addEvent('custom');
-    this.addEvent('outter');
+    this.addEvent('outter', this.outter);
   }
 
   /**
-   * @override
+   * Called if the test event is fired.
+   * @param {string} some data
+   * @param {string} data data
+   * @returns {null} null
    */
-  onTest(some, data) {
-    this.onEventData.push(some);
-    this.onEventData.push(data);
-    this.onEventFired = true;
+  test(some, data) {
+    this.testEventFired = true;
+    this.testEventData.push(some);
+    this.testEventData.push(data);
   }
 
   /**
-   * @override
+   * Called if the outter event is fired.
+   * @returns {null} null
    */
-  onOutter() {
-    this.onOutterFired = true;
-  }
-
-  /**
-   * @override
-   */
-  fireCustom() {
-    this.customFireEventFired = true;
+  outter() {
+    this.outterEventFired = true;
   }
 }

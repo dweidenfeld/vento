@@ -33,10 +33,16 @@ After this you can register new events either in the constructor or somewhere el
 this.addEvent('eventName');
 ``` 
 
+You can also bind an internal method directly to your event.
+
+```javascript
+this.addEvent('eventName', this.eventName);
+```
+
 Then you can register to the event. You can create an internal on function or register from external to your event.
 
 ```javascript
-onEventName() {
+eventName() {
   // do something
 }
 
@@ -45,12 +51,22 @@ or
 myClass.on('eventName', () => {
   // do something
 });
+
+or
+
+myClass.onEventName(() => {
+  // do something
+});
 ```
 
 Thats it... now you can fire your custom created event.
 
 ```javascript
 myClass.fireEventName();
+
+or
+
+myClass.fireEventName('some', { data: true });
 ```
 
 ### Full example
@@ -60,18 +76,23 @@ import Vento from 'vento';
 
 class MyClass extends Vento {
   constructor() {
-    this.addEvent('test');
+    this.addEvent('test', this.test);
   }
 
-  onTest(data1, data2) {
+  test(data1, data2) {
     console.log('inner notification', data1, data2);
   }
 }
 
 const myClass = new MyClass();
 myClass.on('test', (data1, data2) => {
-  console.log('outter notification', data1, data2);
+  console.log('outter notification bound with on', data1, data2);
 });
+
+myClass.onTest((data1, data2) => {
+  console.log('outter notification bound with onTest', data1, data2);
+});
+
 myClass.fireOnTest('first object', 'second object');
 ```
 

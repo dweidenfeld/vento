@@ -7,29 +7,29 @@ export default class Vento {
   /**
    * Adds a new event to the project.
    * @param {string} event the name of the new event
+   * @param {function} callback the internal callback for the event
    * @returns {null} null
    */
-  addEvent(event) {
+  addEvent(event, callback) {
     const ucEvent = event[0].toUpperCase() + event.substr(1);
-    const fireEvent = `fire${ucEvent}`;
-    if (!this[fireEvent]) {
-      this[fireEvent] = (...data) => {
-        if (this.ventEvents[event] && this.ventEvents[event].length > 0) {
-          this.ventEvents[event].forEach((callback) => setTimeout(callback.bind(this, ...data), 0));
-        }
-      };
-    }
+    this[`fire${ucEvent}`] = (...data) => {
+      if (this.ventEvents[event] && this.ventEvents[event].length > 0) {
+        this.ventEvents[event].forEach((cb) => setTimeout(() => {
+          cb(...data);
+        }, 0));
+      }
+    };
+    this[`on${ucEvent}`] = this.on.bind(this, event);
 
-    const onEvent = `on${ucEvent}`;
-    if (this[onEvent]) {
-      this.on(event, this[onEvent].bind(this));
+    if (typeof callback === 'function') {
+      this.on(event, callback.bind(this));
     }
   }
 
   /**
    * Register new callback for event.
    * @param {string} event the event name
-   * @param {Function} callback the callback to be executed
+   * @param {function} callback the callback to be executed
    * @returns {null} null
    */
   on(event, callback) {
