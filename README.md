@@ -96,5 +96,22 @@ myClass.onTest((data1, data2) => {
 myClass.fireOnTest('first object', 'second object');
 ```
 
+## Extend extended class
+what? ...
+
+If you have a class that already extends a class... or is extended by a class you should also have the ability to use Vento.
+So you can just hook Vento in the constructor of your sub class.
+
+```javascript
+class SubClass extends SuperClass {
+  constructor() {
+    super();
+    Vento.extend(this);
+
+    this.addEvent('test');
+  }
+}
+```
+
 ## Copyright and license
 Code and documentation released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
