@@ -1,4 +1,4 @@
-import Vento from '../src/Vento';
+import Vento from '../../src/Vento';
 
 /**
  * The test class.

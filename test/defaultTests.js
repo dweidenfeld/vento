@@ -1,8 +1,8 @@
 import chai from 'chai'; // eslint-disable-line
 
-import TestClass from './TestClass';
+import TestClass from './lib/TestClass';
 
-describe('Vento', () => {
+describe('Vento default tests', () => {
   it('simple event', (done) => {
     const testClass = new TestClass();
     testClass.fireTest('some', 'data');

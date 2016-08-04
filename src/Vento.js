@@ -5,6 +5,17 @@
 export default class Vento {
 
   /**
+   * Extends an already existing class.
+   * @param {Class} clazz the class to extend
+   * @returns {null} null
+   */
+  static extend(clazz) {
+    const instance = new Vento();
+    clazz.addEvent = instance.addEvent; // eslint-disable-line
+    clazz.on = instance.on; // eslint-disable-line
+  }
+
+  /**
    * Adds a new event to the project.
    * @param {string} event the name of the new event
    * @param {function} callback the internal callback for the event
