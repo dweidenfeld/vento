@@ -7,7 +7,8 @@
     "lint": "eslint src/**",
     "test": "mocha --compilers js:babel-core/register test",
     "build": "rimraf dist && mkdir dist && babel -s true --minified -o dist/vento.js src/Vento.js",
-    "default": "npm run test && npm run lint && npm run build"
+    "doc": "esdoc -c ./.esdoc.json",
+    "default": "npm run test && npm run lint && npm run build && npm run doc"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "babel-core": "^6.11.4",
     "babel-preset-es2015": "^6.9.0",
     "chai": "^3.5.0",
+    "esdoc": "^0.4.7",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",
     "eslint-plugin-import": "^1.12.0",

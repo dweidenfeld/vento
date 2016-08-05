@@ -8,6 +8,7 @@ export default class Vento {
    * Extends an already existing class.
    * @param {Class} clazz the class to extend
    * @returns {null} null
+   * @static
    */
   static extend(clazz) {
     const instance = new Vento();
